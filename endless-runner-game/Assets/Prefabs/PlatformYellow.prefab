@@ -118,3 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056feecf6ecd3514b80528e69b2f93a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectiblePrefabs:
+  - {fileID: 3458159898200393487, guid: 675eeeb7ff4282e4896975ba5c34f0c3, type: 3}
+  - {fileID: 8351806680767357782, guid: d81964374df9f794ba711f23a4274eb7, type: 3}
+  - {fileID: 4644000213976314800, guid: b216196e9a1f7be4281cc87ecbe0adf7, type: 3}
+  - {fileID: 2931728162869235738, guid: a92ab322ff18030419ba02f00440555d, type: 3}
+  - {fileID: 2383963660348673740, guid: 840f00bdb87853246bd34b5eceaf407a, type: 3}
+  - {fileID: 4606542174765361279, guid: 4813af98a8d103849a222dcc7e28bff4, type: 3}
