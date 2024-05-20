@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5505866268531865336}
   - component: {fileID: 6699666158973343026}
   - component: {fileID: 363878648817624475}
-  m_Layer: 0
+  - component: {fileID: 5712205628821889966}
+  m_Layer: 6
   m_Name: PlatformRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 1, z: 2.4}
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &5712205628821889966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309142148576007824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056feecf6ecd3514b80528e69b2f93a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
