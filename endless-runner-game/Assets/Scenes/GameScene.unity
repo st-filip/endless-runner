@@ -1772,7 +1772,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   runSpeed: 8
-  jumpHeight: 2
+  jumpHeight: 2.5
+  acceleration: 0.08
+  dropSpeed: -20
+  dropAcceleration: -0.08
 --- !u!4 &7331418158570612166
 Transform:
   m_ObjectHideFlags: 0
