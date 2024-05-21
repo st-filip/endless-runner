@@ -19,6 +19,7 @@ public class HeroCharacterController : MonoBehaviour
     private float initialRunSpeed;
     private float horizontalInput;
     private float initialDropSpeed;
+    private int sweetCount = 0; // Counter for collected "Sweet" items
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,14 @@ public class HeroCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (sweetCount >= 3 || transform.position.y <= -10)
+        {
+            // Stop movement and disable this script
+            enabled = false;
+            runSpeed = 0f;
+            return;
+        }
+
         // Always one since it's an automatic endless runner
         horizontalInput = 1;
 
@@ -63,7 +72,7 @@ public class HeroCharacterController : MonoBehaviour
         }
 
         // Update drop speed over time
-        dropSpeed = initialDropSpeed + (dropAcceleration * Time.deltaTime);
+        dropSpeed = initialDropSpeed + (dropAcceleration * Time.time);
 
         // Check for drop input (Enter key)
         if (!isGrounded && Input.GetKeyDown(KeyCode.Return))
@@ -83,4 +92,28 @@ public class HeroCharacterController : MonoBehaviour
         // Set animator VerticalSpeed for jump/fall animation
         animator.SetFloat("VerticalSpeed", velocity.y);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Sweet"))
+        {
+            sweetCount++;
+            GameManager.instance.RemoveHeart();
+
+            if (sweetCount >= 3)
+            {
+                // Stop movement and disable this script
+                enabled = false;
+                runSpeed = 0f;
+                animator.SetFloat("Speed", 0f);
+            }
+        }
+
+        if (other.CompareTag("Fruit"))
+        {
+            GameManager.instance.IncrementScore();
+        }
+
+    }
+
 }
