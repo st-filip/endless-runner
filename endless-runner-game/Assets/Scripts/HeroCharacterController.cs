@@ -19,7 +19,15 @@ public class HeroCharacterController : MonoBehaviour
     private float initialRunSpeed;
     private float horizontalInput;
     private float initialDropSpeed;
-    private int sweetCount = 0; // Counter for collected "Sweet" items
+    private int sweetCount = 0;
+
+    Dictionary<string, string> favoritePairs = new Dictionary<string, string>
+    {
+        { "FApple(Clone)", "Tica" },
+        { "FPear(Clone)", "Ogi" },
+        { "FBanana(Clone)", "Fica" },
+        { "FStrawberry(Clone)", "Ema" }
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -111,9 +119,23 @@ public class HeroCharacterController : MonoBehaviour
 
         if (other.CompareTag("Fruit"))
         {
-            GameManager.instance.IncrementScore();
+            bool isFavorite = false;
+
+            // Check if the colliding object's name is in the dictionary
+            if (favoritePairs.ContainsKey(other.gameObject.name))
+            {
+                string characterName = favoritePairs[other.gameObject.name];
+                GameObject characterObject = GameObject.Find(characterName);
+
+                if (characterObject != null && characterObject.activeInHierarchy)
+                {
+                    isFavorite = true;
+                }
+            }
+
+            int inc = (isFavorite) ? 5 : 1;
+            GameManager.instance.IncrementScore(inc);
+
         }
-
     }
-
 }

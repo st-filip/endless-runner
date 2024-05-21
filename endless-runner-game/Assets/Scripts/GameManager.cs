@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
+    [SerializeField] private TMPro.TextMeshProUGUI scoreIncrement;
     [SerializeField] private List<RawImage> hearts;
     [SerializeField] private Image hurt;
 
@@ -38,24 +40,59 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void IncrementScore()
+    public void IncrementScore(int inc)
     {
-        instance.score++;
+        instance.score += inc;
         instance.scoreText.text = instance.score.ToString();
+        instance.scoreIncrement.text = "+" + inc.ToString();
+        StartCoroutine(FadeOutIncrement(inc));
     }
+
+    private IEnumerator FadeOutIncrement(int inc)
+    {
+        // Adjust color based on the score increment value
+        Color incrementColor = (inc == 5) ? Color.green : Color.white;
+        incrementColor.a = 1f; // Set alpha to 100%
+
+        scoreIncrement.color = incrementColor; // Assign the modified color back to the score increment text
+
+        // Adjust font size based on the score increment value
+        int fontSize = (inc == 5) ? 150 : 100;
+        scoreIncrement.fontSize = fontSize;
+
+        float fadeDuration = 0.7f; // Duration of the fade-out animation
+
+        // Gradually fade out
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / fadeDuration);
+
+            incrementColor.a = Mathf.Lerp(1f, 0f, t); // Decrease alpha gradually
+            scoreIncrement.color = incrementColor; // Update the color of the score increment text
+
+            yield return null; // Wait for the next frame
+        }
+    }
+
+
     private IEnumerator FadeOutHurt()
     {
         Color hurtColor = hurt.color; // Get the current color of the "hurt" Image
         hurtColor.a = 1f; // Set alpha to 100%
         hurt.color = hurtColor; // Assign the modified color back to the "hurt" Image
 
-        // Wait for a short duration
-        yield return new WaitForSeconds(1f);
+        float fadeDuration = 0.7f; // Duration of the fade-out animation
 
         // Gradually fade out
-        while (hurtColor.a > 0f)
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
         {
-            hurtColor.a -= Time.deltaTime * 2f; // Decrease alpha gradually
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / fadeDuration);
+
+            hurtColor.a = Mathf.Lerp(1f, 0f, t); // Decrease alpha gradually
             hurt.color = hurtColor; // Update the color of the "hurt" Image
             yield return null; // Wait for the next frame
         }
