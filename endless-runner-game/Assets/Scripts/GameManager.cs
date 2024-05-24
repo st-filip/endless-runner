@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField] private GameObject gameOverlayPanel;
     [SerializeField] private TMPro.TextMeshProUGUI scoreText;
     [SerializeField] private TMPro.TextMeshProUGUI scoreIncrement;
     [SerializeField] private List<RawImage> hearts;
     [SerializeField] private Image hurt;
+
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMPro.TextMeshProUGUI finalScoreText;
 
     private int score;
     public static GameManager instance;
@@ -108,5 +111,15 @@ public class GameManager : MonoBehaviour
             hearts[heartCount].color = heartColor;
             StartCoroutine(FadeOutHurt());
         }
+    }
+
+    public void GameOver()
+    {
+        instance.finalScoreText.text = "Score: " + instance.score;
+        // Deactivate the GameOverlay panel
+        instance.gameOverlayPanel.SetActive(false);
+        // Activate the GameOver panel
+        instance.gameOverPanel.SetActive(true);
+        Debug.Log("Game over");
     }
 }

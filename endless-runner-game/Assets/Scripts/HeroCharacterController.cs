@@ -46,6 +46,8 @@ public class HeroCharacterController : MonoBehaviour
             // Stop movement and disable this script
             enabled = false;
             runSpeed = 0f;
+            animator.SetFloat("Speed", 0f);
+            GameManager.instance.GameOver();
             return;
         }
 
@@ -107,14 +109,6 @@ public class HeroCharacterController : MonoBehaviour
         {
             sweetCount++;
             GameManager.instance.RemoveHeart();
-
-            if (sweetCount >= 3)
-            {
-                // Stop movement and disable this script
-                enabled = false;
-                runSpeed = 0f;
-                animator.SetFloat("Speed", 0f);
-            }
         }
 
         if (other.CompareTag("Fruit"))
