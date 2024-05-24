@@ -20,6 +20,7 @@ public class HeroCharacterController : MonoBehaviour
     private float horizontalInput;
     private float initialDropSpeed;
     private int sweetCount = 0;
+    private float elapsedTime = 0f;
 
     Dictionary<string, string> favoritePairs = new Dictionary<string, string>
     {
@@ -51,11 +52,14 @@ public class HeroCharacterController : MonoBehaviour
             return;
         }
 
+        // Increment elapsed time
+        elapsedTime += Time.deltaTime;
+
         // Always one since it's an automatic endless runner
         horizontalInput = 1;
 
         // Increase run speed over time
-        runSpeed = initialRunSpeed + (acceleration * Time.time);
+        runSpeed = initialRunSpeed + (acceleration * elapsedTime);
 
         // Face forward
         transform.forward = new Vector3(horizontalInput, 0, Mathf.Abs(horizontalInput) - 1);
@@ -82,7 +86,7 @@ public class HeroCharacterController : MonoBehaviour
         }
 
         // Update drop speed over time
-        dropSpeed = initialDropSpeed + (dropAcceleration * Time.time);
+        dropSpeed = initialDropSpeed + (dropAcceleration * elapsedTime);
 
         // Check for drop input (Enter key)
         if (!isGrounded && Input.GetKeyDown(KeyCode.Return))
