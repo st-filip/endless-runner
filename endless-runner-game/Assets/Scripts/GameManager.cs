@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMPro.TextMeshProUGUI finalScoreText;
 
+    [SerializeField] private GameObject[] characters;
+
     private int score;
     public static GameManager instance;
     private int heartCount = 3;
@@ -35,6 +37,21 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int selectedCharacterIndex = CharacterSelection.Instance ? CharacterSelection.Instance.GetSelectedCharacterIndex() - 1 : 0;
+
+        for (int i = 0; i < characters.Length; i++)
+        {
+            if(i != selectedCharacterIndex)
+            {
+                characters[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                characters[i].gameObject.SetActive(true);
+            }
+            
+        }
+
         instance.scoreText.text = 0 + "";
     }
 
