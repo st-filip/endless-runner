@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HeroCharacterController : MonoBehaviour
@@ -10,6 +11,9 @@ public class HeroCharacterController : MonoBehaviour
     [SerializeField] private float acceleration = 0.1f; // Speed increase per second
     [SerializeField] private float dropSpeed = -20f; // Initial drop speed
     [SerializeField] private float dropAcceleration = -5f; // Drop speed increase per second
+    [SerializeField] private int countdownTime = 3;
+    [SerializeField] private Material countMaterial;
+    [SerializeField] private Material goMaterial;
 
     private float gravity = -50f;
     private CharacterController characterController;
@@ -21,6 +25,7 @@ public class HeroCharacterController : MonoBehaviour
     private float initialDropSpeed;
     private int sweetCount = 0;
     private float elapsedTime = 0f;
+    private bool canRun = false;
 
     Dictionary<string, string> favoritePairs = new Dictionary<string, string>
     {
@@ -35,13 +40,52 @@ public class HeroCharacterController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        animator.SetFloat("Speed", 0f);
+        animator.SetBool("IsGrounded", true);
         initialDropSpeed = dropSpeed;
         initialRunSpeed = runSpeed;
+        StartCoroutine(StartCountdown());
+    }
+
+    private IEnumerator StartCountdown()
+    {
+        GameObject countdownOverlay = GameObject.Find("CountdownOverlay");
+        countdownOverlay.SetActive(true);
+        TextMeshProUGUI countdownText = countdownOverlay.transform.Find("CountdownText").GetComponent<TextMeshProUGUI>();
+
+        int countdown = countdownTime+1;
+        while (countdown > 0)
+        {
+            if (countdown != 1)
+            {
+                countdownText.text = (countdown - 1).ToString();
+                countdownText.fontMaterial = countMaterial; // Set count material
+                countdownText.fontSize = 250;
+            }
+            else
+            {
+                countdownText.text = "GO!";
+                countdownText.fontMaterial = goMaterial; // Change to "GO!" material
+                countdownText.fontSize = 300;
+            }
+
+            yield return new WaitForSeconds(1);
+            countdown--;
+        }
+
+        countdownOverlay.SetActive(false);
+        HeroCharacterController hero = FindObjectOfType<HeroCharacterController>();
+        if (hero != null)
+        {
+            hero.StartRunning();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!canRun) return;
+
         if (sweetCount >= 3 || transform.position.y <= -10)
         {
             // Stop movement and disable this script
@@ -106,7 +150,10 @@ public class HeroCharacterController : MonoBehaviour
         // Set animator VerticalSpeed for jump/fall animation
         animator.SetFloat("VerticalSpeed", velocity.y);
     }
-
+    public void StartRunning()
+    {
+        canRun = true;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Sweet"))
