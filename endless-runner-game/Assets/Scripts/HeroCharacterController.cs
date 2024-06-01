@@ -84,6 +84,8 @@ public class HeroCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         if (!canRun) return;
 
         if (sweetCount >= 3 || transform.position.y <= -10)
