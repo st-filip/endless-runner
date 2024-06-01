@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        AudioManager.Instance.SetMusicVolume(1f);
+        AudioManager.Instance.PlayMusic("Theme");
     }
 
     // Update is called once per frame

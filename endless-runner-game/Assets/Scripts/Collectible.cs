@@ -23,7 +23,15 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player hit a collectible!");
+            if (this.gameObject.CompareTag("Fruit"))
+            {
+                AudioManager.Instance.PlaySound("Point");
+            }
+            else
+            {
+                AudioManager.Instance.PlaySound("Lose");
+            }
+            
 
             Destroy(gameObject);
         }

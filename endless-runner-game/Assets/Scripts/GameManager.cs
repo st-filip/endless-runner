@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance.SetMusicVolume(0.7f);
+
         Time.timeScale = 1f;
 
         int selectedCharacterIndex = CharacterSelection.Instance ? CharacterSelection.Instance.GetSelectedCharacterIndex() - 1 : 0;
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         pausePanel.SetActive(true);
         Time.timeScale = 0f; // Pause the game
+        AudioManager.Instance.PauseMusic();
     }
 
     public void ResumeGame()
@@ -89,6 +92,7 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1f; // Resume the game
+        AudioManager.Instance.ResumeMusic();
     }
 
     public void IncrementScore(int inc)
@@ -169,6 +173,7 @@ public class GameManager : MonoBehaviour
         // Activate the GameOver panel
         instance.gameOverPanel.SetActive(true);
         Debug.Log("Game over");
+        AudioManager.Instance.StopMusic();
     }
 
     public void GoToMainMenu()
@@ -177,6 +182,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayAgain()
     {
+        AudioManager.Instance.PlayMusic("Theme");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

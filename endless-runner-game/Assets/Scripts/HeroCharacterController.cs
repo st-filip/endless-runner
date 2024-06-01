@@ -95,6 +95,7 @@ public class HeroCharacterController : MonoBehaviour
             runSpeed = 0f;
             animator.SetFloat("Speed", 0f);
             GameManager.instance.GameOver();
+            AudioManager.Instance.PlaySound("GameOver");
             return;
         }
 
@@ -128,6 +129,7 @@ public class HeroCharacterController : MonoBehaviour
         // Check for jump input
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            AudioManager.Instance.PlaySound("Jump");
             velocity.y += Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
 

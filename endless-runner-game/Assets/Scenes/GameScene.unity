@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 147049311}
   - component: {fileID: 147049310}
   - component: {fileID: 147049309}
+  - component: {fileID: 147049312}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -690,6 +691,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147049307}
   m_CullTransparentMesh: 1
+--- !u!114 &147049312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147049307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ab4647ec9dd214ba1211bd6c738c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &229273403
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +983,7 @@ GameObject:
   - component: {fileID: 245283158}
   - component: {fileID: 245283157}
   - component: {fileID: 245283156}
+  - component: {fileID: 245283159}
   m_Layer: 5
   m_Name: PlayAgainButton
   m_TagString: Untagged
@@ -1091,6 +1105,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245283154}
   m_CullTransparentMesh: 1
+--- !u!114 &245283159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245283154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ab4647ec9dd214ba1211bd6c738c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &253252288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,6 +1938,7 @@ GameObject:
   - component: {fileID: 808452724}
   - component: {fileID: 808452723}
   - component: {fileID: 808452722}
+  - component: {fileID: 808452725}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -2033,6 +2060,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808452720}
   m_CullTransparentMesh: 1
+--- !u!114 &808452725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808452720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ab4647ec9dd214ba1211bd6c738c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &846502962 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5541548970965046552, guid: 723a67baa9a052a4594adc7f9e32ff04, type: 3}
@@ -2204,6 +2243,7 @@ GameObject:
   - component: {fileID: 907801797}
   - component: {fileID: 907801796}
   - component: {fileID: 907801795}
+  - component: {fileID: 907801798}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -2325,6 +2365,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907801793}
   m_CullTransparentMesh: 1
+--- !u!114 &907801798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907801793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ab4647ec9dd214ba1211bd6c738c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,6 +3184,7 @@ GameObject:
   - component: {fileID: 1542503357}
   - component: {fileID: 1542503356}
   - component: {fileID: 1542503355}
+  - component: {fileID: 1542503358}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -3253,6 +3306,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542503353}
   m_CullTransparentMesh: 1
+--- !u!114 &1542503358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542503353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ab4647ec9dd214ba1211bd6c738c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1568591443
 GameObject:
   m_ObjectHideFlags: 0
