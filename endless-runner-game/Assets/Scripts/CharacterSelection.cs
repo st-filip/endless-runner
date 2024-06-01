@@ -7,7 +7,7 @@ public class CharacterSelection : MonoBehaviour
 {
     public static CharacterSelection Instance;
 
-    private int selectedCharacterIndex = 1; // Index of the selected character
+    private int selectedCharacterIndex; // Index of the selected character
 
     private void Awake()
     {
@@ -20,11 +20,16 @@ public class CharacterSelection : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Load the saved character index or set to default value if not found
+        selectedCharacterIndex = PlayerPrefs.GetInt("SelectedCharacterIndex", 1);
     }
 
     public void SelectCharacter(int index)
     {
         selectedCharacterIndex = index;
+        PlayerPrefs.SetInt("SelectedCharacterIndex", selectedCharacterIndex); // Save to PlayerPrefs
+        PlayerPrefs.Save(); // Ensure the changes are saved
         UpdateCharacterButtons();
     }
 

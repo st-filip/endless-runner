@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMPro.TextMeshProUGUI finalScoreText;
+    [SerializeField] private TMPro.TextMeshProUGUI highScoreText;
 
     [SerializeField] private GameObject[] characters;
 
@@ -167,6 +168,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        //Set highscore
+        int highscore = PlayerPrefs.GetInt("Highscore", 0);
+        if (instance.score > highscore)
+        {
+            highscore = instance.score;
+            PlayerPrefs.SetInt("Highscore", instance.score);
+        }
+        instance.highScoreText.text = "High Score: " + highscore.ToString();
         instance.finalScoreText.text = "Score: " + instance.score;
         // Deactivate the GameOverlay panel
         instance.gameOverlayPanel.SetActive(false);
