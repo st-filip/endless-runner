@@ -1,5 +1,8 @@
 # Endless Runner igrica - Healthy Runners - Zdravi Trkači
 
+## Dokumentacija
+Nalazi se na [Google drive-u](https://drive.google.com/drive/folders/1kolYZ4-9nqXje7ml0lxJvGInPn0Iv-ON?usp=drive_link).
+
 ## Opis
 
 Ova igra je akciona Endless runner kategorije kreirana u Unity 3D okruženju. Cilj igre je skupljati voće i izbegavati slatkiše dok trčite po platformama koje se neprestano generišu. Trčite što dalje kako biste postigli što veći rezultat, ali budite oprezni jer svaki slatkiš koji pojedete oduzima jedan život.
